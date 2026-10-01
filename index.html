@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sohag Gemini</title>
+    <title>Google Gemini - Salsabilah Empires Executive Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -23,21 +23,24 @@
 
         /* Sidebar */
         .sidebar {
-            width: 260px;
+            width: 280px;
             background-color: #1e1f20;
             padding: 20px 15px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border-right: 1px solid #333537;
         }
 
         .brand {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 500;
             color: #e3e3e3;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333537;
         }
 
         .sparkle-icon {
@@ -46,6 +49,36 @@
             background: linear-gradient(135deg, #4285f4, #9b51e0, #e91e63);
             -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>') center/contain no-repeat;
             mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>') center/contain no-repeat;
+        }
+
+        .menu-list {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .menu-item {
+            background-color: transparent;
+            border: none;
+            color: #c4c7c5;
+            padding: 10px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            text-align: left;
+            transition: 0.2s;
+            width: 100%;
+        }
+
+        .menu-item:hover {
+            background-color: #28292a;
+            color: #e3e3e3;
         }
 
         .new-chat-btn {
@@ -58,9 +91,10 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-top: 25px;
+            margin-bottom: 15px;
             font-size: 0.9rem;
             transition: 0.2s;
+            width: 100%;
         }
 
         .new-chat-btn:hover {
@@ -99,8 +133,8 @@
             width: 26px;
             height: 26px;
             border-radius: 50%;
-            background-color: #8ab4f8;
-            color: #000;
+            background: linear-gradient(135deg, #4285f4, #9b51e0);
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -112,7 +146,7 @@
         .chat-section {
             flex: 1;
             overflow-y: auto;
-            padding: 20px 20%;
+            padding: 20px 15%;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -120,11 +154,11 @@
 
         .welcome-text {
             text-align: center;
-            margin-top: 10vh;
+            margin-top: 8vh;
         }
 
         .welcome-text h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             background: linear-gradient(90deg, #4285f4, #9b51e0, #e91e63);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -134,21 +168,24 @@
         .welcome-text p {
             color: #8e918f;
             margin-top: 10px;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .chat-bubble {
             padding: 14px 18px;
             border-radius: 18px;
-            max-width: 80%;
-            line-height: 1.5;
+            max-width: 85%;
+            line-height: 1.6;
             font-size: 0.95rem;
+            white-space: pre-wrap;
+            word-break: break-word;
         }
 
         .user-msg {
             background-color: #282a2c;
             align-self: flex-end;
             border-bottom-right-radius: 4px;
+            color: #e3e3e3;
         }
 
         .bot-msg {
@@ -156,11 +193,12 @@
             align-self: flex-start;
             border-bottom-left-radius: 4px;
             border: 1px solid #333537;
+            color: #c4c7c5;
         }
 
         /* Input Box Area */
         .input-area {
-            padding: 0 20%;
+            padding: 0 15%;
             margin-bottom: 10px;
         }
 
@@ -189,8 +227,9 @@
             border: none;
             color: #8ab4f8;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
+            padding: 0 5px;
         }
 
         .footer-note {
@@ -198,6 +237,42 @@
             font-size: 0.75rem;
             color: #8e918f;
             margin-top: 8px;
+        }
+
+        /* Modal / Panel */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #1e1f20;
+            border: 1px solid #444746;
+            width: 600px;
+            max-height: 80vh;
+            border-radius: 16px;
+            padding: 24px;
+            overflow-y: auto;
+            color: #e3e3e3;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333537;
+            padding-bottom: 10px;
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            color: #e3e3e3;
+            font-size: 1.2rem;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -208,11 +283,20 @@
         <div>
             <div class="brand">
                 <div class="sparkle-icon"></div>
-                <span>Sohag Gemini</span>
+                <span>Google Gemini</span>
             </div>
             <button class="new-chat-btn" onclick="clearChat()">
                 <span>+</span> New Chat
             </button>
+            <div class="menu-list">
+                <button class="menu-item" onclick="showInfo('entities')">🏢 Corporate Entities</button>
+                <button class="menu-item" onclick="showInfo('ip')">⚡ Intellectual Property</button>
+                <button class="menu-item" onclick="showInfo('credentials')">🛡️ Global Credential Hub</button>
+                <button class="menu-item" onclick="showInfo('copilot')">🤝 AI Partnership Status</button>
+            </div>
+        </div>
+        <div style="font-size: 0.75rem; color: #8e918f; text-align: center;">
+            Salsabilah Empires Executive v1.3.0
         </div>
     </div>
 
@@ -223,30 +307,103 @@
             <div></div>
             <div class="user-profile">
                 <div class="user-avatar">S</div>
-                <span>Sohag Gemini</span>
+                <span>Md. Al Amin Sohag</span>
             </div>
         </div>
 
         <!-- Chat Messages -->
         <div class="chat-section" id="chatSection">
             <div class="welcome-text" id="welcomeText">
-                <h1>Hello, Sohag</h1>
-                <p>How can I help you today in your private ecosystem?</p>
+                <h1>Hello, Al Amin Sohag</h1>
+                <p>Welcome to your official Salsabilah Empires & Google Gemini Portal.</p>
             </div>
         </div>
 
         <!-- Input Box -->
         <div class="input-area">
             <div class="input-box">
-                <input type="text" id="userInput" placeholder="Ask Sohag Gemini..." onkeypress="handleKeyPress(event)">
+                <input type="text" id="userInput" placeholder="Ask Gemini about Salsabilah Empires, credentials, or strategy..." onkeypress="handleKeyPress(event)">
                 <button class="send-btn" onclick="sendMessage()">➔</button>
             </div>
-            <div class="footer-note">Sohag Gemini Private Portal • Powered by GitHub Pages</div>
+            <div class="footer-note">Google Gemini &bull; Salsabilah Amin Empires Ltd. Strategic Hub</div>
+        </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Information</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalBody" style="font-size: 0.9rem; line-height: 1.6;">
+                <!-- Content injected dynamically -->
+            </div>
         </div>
     </div>
 
     <script>
-        function sendMessage() {
+        // API Key configured securely
+        const apiKey = "AQ.Ab8RN6ImOJ_gwfp85mzgIc46nj1S5JgRaYD9nbRTVLojR5G8-Q";
+
+        const enterpriseData = {
+            entities: `
+                <h4 style="color:#8ab4f8; margin-bottom:10px;">Registered Corporate Entities</h4>
+                <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+                    <li><strong>Salsabilah Amin Empires Ltd.</strong> (Parent Global Enterprise)</li>
+                    <li><strong>Salsabilah Amin LLC</strong> (USA / Global Operations)</li>
+                    <li><strong>Salsabilah Amin Limited</strong> (Enterprise Services & Asset Management)</li>
+                    <li><strong>SR Electronics Park</strong> (Retail, Trade & Partner Operations - DEAL002905)</li>
+                    <li><strong>Salsabilah Electronics Park</strong> (Consumer Electronics Supply Chain)</li>
+                </ul>
+            `,
+            ip: `
+                <h4 style="color:#8ab4f8; margin-bottom:10px;">Intellectual Property & Frameworks</h4>
+                <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+                    <li><strong>The Digit Theory™</strong>: Proprietary data science & AI architecture.</li>
+                    <li><strong>SOHAG Filter</strong>: Algorithmic telemetry & edge computing optimization.</li>
+                    <li><strong>Financial Alchemy</strong>: Global cash flow & liquidity engineering.</li>
+                    <li><strong>Strategic Warfare</strong>: Market execution & cross-border expansion treatise.</li>
+                </ul>
+            `,
+            credentials: `
+                <h4 style="color:#8ab4f8; margin-bottom:10px;">Global Credential Hub (100+ Accreditations)</h4>
+                <p>Spanning 29 commercial markets and 19 research nations across IT, Cloud, AI, Executive Management, and HSE.</p>
+                <ul style="padding-left: 20px; margin-top: 8px; display: flex; flex-direction: column; gap: 6px;">
+                    <li>Google Cloud Professional Architect & Developer Track</li>
+                    <li>Microsoft Certified: Azure AI Engineer Associate</li>
+                    <li>AWS Certified Solutions Architect - Professional</li>
+                    <li>Project Management Professional (PMP)</li>
+                    <li>NEBOSH International General Certificate</li>
+                </ul>
+            `,
+            copilot: `
+                <h4 style="color:#8ab4f8; margin-bottom:10px;">AI Partnership Designation</h4>
+                <p><strong>Role:</strong> Strategic AI Assistant & Ecosystem Copilot</p>
+                <p><strong>Designation:</strong> আমার বিশ্বস্ত সহযোদ্ধা, আমার বন্ধু, আমার ভাই — আমার জেমিনী</p>
+                <p style="margin-top: 8px; color: #a8c7fa;">Fully integrated across Salsabilah Empires digital infrastructure and GitHub Pages portal.</p>
+            `
+        };
+
+        function showInfo(type) {
+            const modal = document.getElementById('infoModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+
+            if (type === 'entities') title.innerText = "Corporate Entities";
+            else if (type === 'ip') title.innerText = "Intellectual Property";
+            else if (type === 'credentials') title.innerText = "Global Credential Hub";
+            else if (type === 'copilot') title.innerText = "AI Partnership";
+
+            body.innerHTML = enterpriseData[type];
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+
+        async function sendMessage() {
             const inputField = document.getElementById('userInput');
             const message = inputField.value.trim();
             if (!message) return;
@@ -256,7 +413,7 @@
 
             const chatSection = document.getElementById('chatSection');
 
-            // User Message
+            // User Message Display
             const userBubble = document.createElement('div');
             userBubble.className = 'chat-bubble user-msg';
             userBubble.innerText = message;
@@ -265,17 +422,41 @@
             inputField.value = '';
             chatSection.scrollTop = chatSection.scrollHeight;
 
-            // Bot Response Simulation
-            setTimeout(() => {
-                const botBubble = document.createElement('div');
-                botBubble.className = 'chat-bubble bot-msg';
-                botBubble.innerText = "Sohag Gemini response: System processing your request for '" + message + "'";
-                chatSection.appendChild(botBubble);
-                chatSection.scrollTop = chatSection.scrollHeight;
-            }, 600);
+            // Loading State
+            const botBubble = document.createElement('div');
+            botBubble.className = 'chat-bubble bot-msg';
+            botBubble.innerText = "Thinking...";
+            chatSection.appendChild(botBubble);
+            chatSection.scrollTop = chatSection.scrollHeight;
+
+            try {
+                const systemPrompt = "System Instruction: You are Google Gemini, operating as the trusted AI copilot, friend, and strategic partner ('আমার বিশ্বস্ত সহযোদ্ধা, আমার বন্ধু, আমার ভাই — আমার জেমিনী') to Md. Al Amin Sohag, Managing Director of Salsabilah Amin Empires Ltd. and SR Electronics Park. Assist with enterprise management, IT, credentials, and business operations in professional and engaging tone.\n\nUser Query: ";
+                
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: systemPrompt + message }] }]
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
+                    botBubble.innerText = data.candidates[0].content.parts[0].text;
+                } else if (data.error) {
+                    botBubble.innerText = "Error: " + data.error.message;
+                } else {
+                    botBubble.innerText = "No response generated.";
+                }
+            } catch (error) {
+                botBubble.innerText = "Network failure or API Key error. Please check configuration.";
+            }
+
+            chatSection.scrollTop = chatSection.scrollHeight;
         }
 
-        function handleKeyPress(event) {
+    function handleKeyPress(event) {
             if (event.key === 'Enter') {
                 sendMessage();
             }
@@ -285,11 +466,12 @@
             const chatSection = document.getElementById('chatSection');
             chatSection.innerHTML = `
                 <div class="welcome-text" id="welcomeText">
-                    <h1>Hello, Sohag</h1>
-                    <p>How can I help you today in your private ecosystem?</p>
+                    <h1>Hello, Al Amin Sohag</h1>
+                    <p>Welcome to your official Salsabilah Empires & Google Gemini Portal.</p>
                 </div>
             `;
         }
     </script>
 </body>
 </html>
+
